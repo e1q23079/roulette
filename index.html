@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ルーレット</title>
+  </head>
+  <body>
+    <B><h2><center>ルーレット</center></h2></B>
+    <center><input type="button" value="ルーレットを実行する" onclick="push_button();" style="font-size:20px; width:300px;height:40px"/></center>
+    <B><h2><center><div id="text4"></div></center></h2></B>
+    <B><h1><center><div id="text"></div></center></h1></B>
+    <center><div id="text3"></div></center>
+    <B><center><div id="text5"></div></center></B>
+    <script>
+      var flag=0;
+      let ninzu;
+      var number=0;
+      let count=0;
+      let name = new Array();
+      var num = new Array();
+      ninzu = prompt("人数を入力してください．");
+      for(let i=0;i<ninzu;i++){
+        number++;
+        name[number] = prompt(number+"人目の名前を入力してください．");
+      }
+      function push_button(){
+        var text2=document.getElementById("text");
+        text4.innerHTML="選ばれたのは・・・</br>";
+        let randam;
+        while(flag==0){
+            randam = Math.floor(Math.random()*(ninzu)+1);
+            //alert(randam);
+            if(num[randam]!=0){
+                text2.innerHTML=name[randam]+"さん";
+                num[randam]=0;
+                count++;
+                flag=1;
+            }else if(count==ninzu){
+                text2.innerHTML="該当者はいません．";
+                flag=1;
+            }
+        }
+        flag=0;
+        var day_info = new Date();
+        text3.innerHTML="Processing Number:"+Math.floor(day_info);
+        text5.innerHTML="Roulette_System_App";
+      }
+    </script>
+  </body>
+</html>
